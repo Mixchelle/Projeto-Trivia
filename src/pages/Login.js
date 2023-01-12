@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import fetchToken from '../helpers/fetch';
