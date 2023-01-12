@@ -1,7 +1,6 @@
-const fetchToken = async (url) => {
-  const response = await fetch(url);
+const fetchToken = async (url, method = 'GET') => {
+  const response = await fetch(url, { method });
   const json = await response.json();
-  console.log(json);
   return json;
 };
 
