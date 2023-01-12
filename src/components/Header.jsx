@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 class Header extends Component {
   render() {
-    const { name, email } = this.props;
-    const url = `https://www.gravatar.com/avatar/${email}`;
+    const name = 'Nome da pessoa';
+    const url = 'https://www.gravatar.com/avatar/c19ad9dbaf91c5533605fbf985177ccc';
     const score = 0;
     return (
       <div>
@@ -25,9 +25,8 @@ const mapStateToProps = (state) => ({
   ...state,
 });
 
-Header.propTypes = {
-  email: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-};
+// Header.propTypes = {
+//   name: PropTypes.string.isRequired,
+// };
 
 export default connect(mapStateToProps)(Header);

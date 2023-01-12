@@ -5,10 +5,7 @@ export default class Game extends Component {
   render() {
     return (
       <div>
-        <Header
-          name="Nome da Pessoa"
-          email="alguem@email.com"
-        />
+        <Header />
         <h1>GamePage</h1>
       </div>
     );
