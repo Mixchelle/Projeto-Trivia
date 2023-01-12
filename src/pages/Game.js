@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../components/Header';
 import PropTypes from 'prop-types';
 import fetchToken from '../helpers/fetch';
 import Button from '../components/Button';
