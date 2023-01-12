@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../components/Header';
 import PropTypes from 'prop-types';
+import Header from '../components/Header';
 import fetchToken from '../helpers/fetch';
 import Button from '../components/Button';
 
@@ -54,49 +54,52 @@ export default class Game extends Component {
     const { questions, questionIndex, answers, correctAnswer } = this.state;
 
     return (
-      <section>
-        {
-          questions.length > 0
-            ? (
-              <>
-                <h3
-                  data-testid="question-category"
-                >
-                  {
-                    questions[questionIndex].category
-                  }
-                </h3>
-                <h3
-                  data-testid="question-text"
-                >
-                  {
-                    questions[questionIndex]
-                      .question
-                  }
-                </h3>
-                <section
-                  data-testid="answer-options"
-                >
-                  {
-                    answers.map((each, index) => (
-                      <Button
-                        key={ each }
-                        btnLabel={ each }
-                        testId={
-                          each === correctAnswer
-                            ? 'correct-answer'
-                            : `wrong-answer-${index}`
-                        }
+      <div>
+        <Header />
+        <section>
+          {
+            questions.length > 0
+              ? (
+                <>
+                  <h3
+                    data-testid="question-category"
+                  >
+                    {
+                      questions[questionIndex].category
+                    }
+                  </h3>
+                  <h3
+                    data-testid="question-text"
+                  >
+                    {
+                      questions[questionIndex]
+                        .question
+                    }
+                  </h3>
+                  <section
+                    data-testid="answer-options"
+                  >
+                    {
+                      answers.map((each, index) => (
+                        <Button
+                          key={ each }
+                          btnLabel={ each }
+                          testId={
+                            each === correctAnswer
+                              ? 'correct-answer'
+                              : `wrong-answer-${index}`
+                          }
                         // onClick={}
-                      />
-                    ))
-                  }
-                </section>
-              </>
-            )
-            : <h1>LOADING...</h1>
-        }
-      </section>
+                        />
+                      ))
+                    }
+                  </section>
+                </>
+              )
+              : <h1>LOADING...</h1>
+          }
+        </section>
+      </div>
     );
   }
 }

@@ -22,7 +22,7 @@ class Login extends Component {
     const { history, dispatch } = this.props;
     const url = 'https://opentdb.com/api_token.php?command=request';
     const tokenFetch = await fetchToken(url);
-    localStorage.setItem('token', JSON.stringify(tokenFetch));   
+    localStorage.setItem('token', JSON.stringify(tokenFetch));
     dispatch(loginAction(this.state));
     history.push('/game');
   };
