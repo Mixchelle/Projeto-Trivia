@@ -27,6 +27,7 @@ class Login extends Component {
 
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
     return (
       <>
         <Input
@@ -52,6 +53,11 @@ class Login extends Component {
           btnLabel="Play"
           isDisabled={ !(name.length > 0 && email.length > 0) }
           handleButton={ this.handleClick }
+        />
+        <Button
+          testId="btn-settings"
+          btnLabel="Settings"
+          handleButton={ () => history.push('/settings') }
         />
       </>
     );
