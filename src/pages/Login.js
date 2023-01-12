@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import fetchToken from '../helpers/fetch';
+import { loginAction } from '../redux/actions';
 
 class Login extends Component {
   state = {
@@ -12,9 +13,11 @@ class Login extends Component {
   };
 
   handleChange = ({ target: { id, value } }) => {
+    const { dispatch } = this.props;
     this.setState({
       [id]: value,
     });
+    dispatch(loginAction(this.state));
   };
 
   handleClick = async () => {
@@ -63,6 +66,7 @@ const mapStateToProps = (state) => ({
 });
 
 Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
