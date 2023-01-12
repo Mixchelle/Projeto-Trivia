@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import fetchToken from '../helpers/fetch';
+import { loginAction } from '../redux/actions/index';
 
 class Login extends Component {
   state = {
@@ -18,10 +19,11 @@ class Login extends Component {
   };
 
   handleClick = async () => {
-    const { history } = this.props;
+    const { history, dispatch } = this.props;
     console.log(history);
     const tokenFetch = await fetchToken('https://opentdb.com/api_token.php?command=request');
     localStorage.setItem('token', tokenFetch.token);
+    dispatch(loginAction(this.state));
     history.push('/game');
   };
 
@@ -69,6 +71,7 @@ const mapStateToProps = (state) => ({
 });
 
 Login.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,

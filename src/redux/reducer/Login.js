@@ -1,17 +1,15 @@
-import { LOGIN_SAVED } from '../actions';
+import { LOGIN_SAVED } from '../actions/index';
 
 const INITIAL_STATE = {
-  name: 'Nome da pessoa',
-  email: 'alguem@email.com',
+  name: '',
+  email: '',
 };
 
 const login = (state = INITIAL_STATE, action) => {
   switch (action.type) {
   case LOGIN_SAVED:
     return {
-      ...state,
-      name: action.data.name,
-      email: action.data.email,
+      ...action.payload,
     };
   default:
     return state;
