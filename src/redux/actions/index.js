@@ -5,9 +5,11 @@ export const GRAVATAR_REQUEST_FAIL = 'GRAVATAR_REQUEST_FAIL';
 export const SCORE_SAVED = 'SCORE_SAVED';
 export const LOGIN_SAVED = 'LOGIN_SAVED';
 
-export const loginAction = (payload) => ({
+export const loginAction = (personalInfo) => ({
   type: LOGIN_SAVED,
-  payload,
+  payload: {
+    personalInfo,
+  },
 });
 
 export const scoreSaved = (payload) => ({
