@@ -9,6 +9,7 @@ export default function App() {
     <Switch>
       <Route path="/" component={ Login } exact />
       <Route path="/game" component={ Game } exact />
+      <Route path="/feedback" component={ Game } exact />
     </Switch>
   );
 }
