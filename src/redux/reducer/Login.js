@@ -2,7 +2,7 @@ import { LOGIN_SAVED } from '../actions';
 
 const INITIAL_STATE = {
   name: 'Nome da pessoa',
-  email: 'alguem@email.com',
+  email: 'email@pessoa.com',
 };
 
 const login = (state = INITIAL_STATE, action) => {
@@ -10,8 +10,8 @@ const login = (state = INITIAL_STATE, action) => {
   case LOGIN_SAVED:
     return {
       ...state,
-      name: action.data.name,
-      email: action.data.email,
+      name: state.name,
+      email: state.email,
     };
   default:
     return state;
