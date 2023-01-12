@@ -21,9 +21,9 @@ class Login extends Component {
   handleClick = async () => {
     const { history, dispatch } = this.props;
     console.log(history);
-    dispatch(loginAction(this.state));
     const tokenFetch = await fetchToken('https://opentdb.com/api_token.php?command=request');
     localStorage.setItem('token', tokenFetch.token);
+    dispatch(loginAction(this.state));
     history.push('/game');
   };
 
