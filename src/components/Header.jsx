@@ -7,7 +7,7 @@ class Header extends Component {
   render() {
     const { name, email } = this.props;
     const emailString = md5(email).toString();
-    console.log({ name, email });
+    console.log({ name, email, emailString });
     const score = 0;
     return (
       <div>
