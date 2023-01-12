@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Input from '../components/Input';
 import Button from '../components/Button';
 
@@ -21,6 +22,7 @@ class Login extends Component {
 
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
     return (
       <>
         <Input
@@ -47,6 +49,11 @@ class Login extends Component {
           isDisabled={ !(name.length > 0 && email.length > 0) }
           handleButton={ this.handleClick }
         />
+        <Button
+          testId="btn-settings"
+          btnLabel="Settings"
+          handleButton={ () => history.push('/settings') }
+        />
       </>
     );
   }
@@ -55,5 +62,11 @@ class Login extends Component {
 const mapStateToProps = (state) => ({
   ...state,
 });
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default connect(mapStateToProps)(Login);
