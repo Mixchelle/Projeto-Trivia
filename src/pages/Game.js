@@ -11,6 +11,8 @@ export default class Game extends Component {
     questions: [],
     questionIndex: 0,
     answers: [],
+    correctClass: '',
+    wrongClass: '',
   };
 
   async componentDidMount() {
@@ -27,6 +29,14 @@ export default class Game extends Component {
       }, this.handleShuffle);
     }
   }
+
+  styleAnswerButton = () => {
+    this.setState({ correctClass: 'green-border', wrongClass: 'red-border' });
+  };
+
+  handleClickAnswer = () => {
+    this.styleAnswerButton();
+  };
 
   shuffleArray = (arr) => {
     const arr2 = [];
@@ -51,8 +61,14 @@ export default class Game extends Component {
   };
 
   render() {
-    const { questions, questionIndex, answers, correctAnswer } = this.state;
-
+    const {
+      questions,
+      questionIndex,
+      answers,
+      correctAnswer,
+      correctClass,
+      wrongClass,
+    } = this.state;
     return (
       <div>
         <Header />
@@ -89,7 +105,12 @@ export default class Game extends Component {
                               ? 'correct-answer'
                               : `wrong-answer-${index}`
                           }
-                        // onClick={}
+                          handleButton={ this.handleClickAnswer }
+                          buttonClassCss={
+                            each === correctAnswer
+                              ? correctClass
+                              : wrongClass
+                          }
                         />
                       ))
                     }
