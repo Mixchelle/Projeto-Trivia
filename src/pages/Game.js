@@ -6,7 +6,7 @@ import Button from '../components/Button';
 
 const three = 3;
 
-export default class Game extends Component {
+class Game extends Component {
   state = {
     questions: [],
     questionIndex: 0,
@@ -59,7 +59,6 @@ export default class Game extends Component {
 
   render() {
     const { questions, questionIndex, answers, correctAnswer, nextOn } = this.state;
-
     return (
       <div>
         <Header />
@@ -110,7 +109,7 @@ export default class Game extends Component {
           ? (
             <Button
               testId="btn-next"
-              disabled={ false }
+              disabled={ this.enableButtonNext() }
               btnLabel="Next"
             />)
           : ''}
@@ -120,8 +119,21 @@ export default class Game extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  questionsRedux: state.gamepage.questions,
+  playerScore: state.login.score,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchApiOfQuestionsRedux: (token) => dispatch(fetchApiOfQuestions(token)),
+  savePlayerPointsRedux: (points) => dispatch(savePlayerPoints(points)),
+  savePlayerAssertionsRedux: (assertions) => dispatch(savePlayerAssertions(assertions)),
+});
+
 Game.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game);
