@@ -5,6 +5,7 @@ import fetchToken from '../helpers/fetch';
 import Button from '../components/Button';
 
 const three = 3;
+const four = 4;
 
 export default class Game extends Component {
   state = {
@@ -104,6 +105,21 @@ export default class Game extends Component {
     clearInterval(intervalId);
   };
 
+  handleNext = () => {
+    const { questionIndex } = this.state;
+    if (questionIndex < four) {
+      this.setState((prevState) => ({
+        nextOn: false,
+        questionIndex: prevState.questionIndex + 1,
+        correctClass: '',
+        wrongClass: '',
+      }), this.handleShuffle, this.timedStart());
+    } else {
+      const { history } = this.props;
+      history.push('/feedback');
+    }
+  };
+
   render() {
     const {
       questions,
@@ -115,7 +131,7 @@ export default class Game extends Component {
       timer,
       nextOn,
     } = this.state;
-
+    console.log(questions);
     return (
       <div>
         <Header />
@@ -175,9 +191,9 @@ export default class Game extends Component {
               testId="btn-next"
               disabled={ false }
               btnLabel="Next"
+              handleButton={ this.handleNext }
             />)
           : ''}
-
       </div>
     );
   }
