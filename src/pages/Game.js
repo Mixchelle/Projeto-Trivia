@@ -115,6 +115,7 @@ export default class Game extends Component {
       timer,
       nextOn,
     } = this.state;
+
     return (
       <div>
         <Header />
