@@ -1,8 +1,9 @@
+import md5 from 'crypto-js/md5';
+
+export const GRAVATAR_REQUEST = 'GRAVATAR_REQUEST';
+export const GRAVATAR_REQUEST_FAIL = 'GRAVATAR_REQUEST_FAIL';
 export const SCORE_SAVED = 'SCORE_SAVED';
 export const LOGIN_SAVED = 'LOGIN_SAVED';
-export const SAVE_POINTS = 'SAVE_POINTS';
-export const SAVE_PLAYER_ASSERTIONS = 'SAVE_PLAYER_ASSERTIONS';
-export const GET_QUESTIONS = 'GET_QUESTIONS';
 
 export const loginAction = (payload) => ({
   type: LOGIN_SAVED,
@@ -14,17 +15,23 @@ export const scoreSaved = (payload) => ({
   payload,
 });
 
-export const savePlayerPoints = (payload) => ({
-  type: SAVE_POINTS,
-  payload,
+export const gravatarRequest = (hash) => ({
+  type: SAVE_GRAVATAR,
+  payload: hash,
 });
 
-export const savePlayerAssertions = (playerAssertions) => ({
-  type: SAVE_PLAYER_ASSERTIONS,
-  playerAssertions,
+export const gravatarRequestFail = (error) => ({
+  type: GRAVATAR_REQUEST_FAIL,
+  payload: error,
 });
 
-export const getQuestions = (payload) => ({
-  type: GET_QUESTIONS,
-  payload,
-});
+export const fetchGravatar = (gravatarEmail) => async (dispatch) => {
+  try {
+    dispatch(gravatarRequestStarted());
+    const hash = await md5(gravatarEmail).toString();
+    const gravatar = (`https://www.gravatar.com/avatar/${hash}`);
+    dispatch(gravatarRequest(gravatar));
+  } catch (erro) {
+    dispatch(gravatarRequestFail());
+  }
+};

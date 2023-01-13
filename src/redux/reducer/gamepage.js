@@ -1,26 +1,26 @@
-import { GET_QUESTIONS } from '../actions';
+import { SCORE_SAVED, GRAVATAR_REQUEST } from '../actions';
 
 const INITIAL_STATE = {
-  player: {
-    name: '',
-    assertions: '',
-    score: 0,
-    gravatarEmail: '',
-  },
-  questions: [],
-  players: [],
+  gravatar: '',
+  score: 0,
 };
 
-const gamepage = (state = INITIAL_STATE, action) => {
+const gamePage = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-  case GET_QUESTIONS:
+  case GRAVATAR_REQUEST:
     return {
       ...state,
-      questions: action.questions,
+      email: payload,
+      gravatar: `https://www.gravatar.com/avatar/${payload}`,
+    };
+  case SCORE_SAVED:
+    return {
+      ...state,
+      score: state.score + action.payload,
     };
   default:
     return state;
   }
 };
 
-export default gamepage;
+export default gamePage;
