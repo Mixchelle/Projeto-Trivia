@@ -11,6 +11,7 @@ export default class Game extends Component {
     questions: [],
     questionIndex: 0,
     answers: [],
+    nextOn: false,
   };
 
   async componentDidMount() {
@@ -50,8 +51,14 @@ export default class Game extends Component {
     }
   };
 
+  handleClick = () => {
+    this.setState({
+      nextOn: true,
+    });
+  };
+
   render() {
-    const { questions, questionIndex, answers, correctAnswer } = this.state;
+    const { questions, questionIndex, answers, correctAnswer, nextOn } = this.state;
 
     return (
       <div>
@@ -89,7 +96,7 @@ export default class Game extends Component {
                               ? 'correct-answer'
                               : `wrong-answer-${index}`
                           }
-                        // onClick={}
+                          handleButton={ this.handleClick }
                         />
                       ))
                     }
@@ -99,6 +106,15 @@ export default class Game extends Component {
               : <h1>LOADING...</h1>
           }
         </section>
+        {nextOn
+          ? (
+            <Button
+              testId="btn-next"
+              disabled={ false }
+              btnLabel="Next"
+            />)
+          : ''}
+
       </div>
     );
   }
