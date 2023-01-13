@@ -13,12 +13,13 @@ export default class Game extends Component {
     answers: [],
     correctClass: '',
     wrongClass: '',
+    nextOn: false,
   };
 
   async componentDidMount() {
     const { history } = this.props;
-    const token = JSON.parse(localStorage.getItem('token'));
-    const url = `https://opentdb.com/api.php?amount=5&token=${token.token}`;
+    const token = localStorage.getItem('token');
+    const url = `https://opentdb.com/api.php?amount=5&token=${token}`;
     const apiCheck = await fetchToken(url);
     if (apiCheck.response_code === three) {
       localStorage.removeItem('token');
@@ -36,6 +37,7 @@ export default class Game extends Component {
 
   handleClickAnswer = () => {
     this.styleAnswerButton();
+    this.setState({nextOn: true})
   };
 
   shuffleArray = (arr) => {
@@ -68,6 +70,7 @@ export default class Game extends Component {
       correctAnswer,
       correctClass,
       wrongClass,
+      nextOn
     } = this.state;
     return (
       <div>
@@ -120,6 +123,15 @@ export default class Game extends Component {
               : <h1>LOADING...</h1>
           }
         </section>
+        {nextOn
+          ? (
+            <Button
+              testId="btn-next"
+              disabled={ false }
+              btnLabel="Next"
+            />)
+          : ''}
+
       </div>
     );
   }
