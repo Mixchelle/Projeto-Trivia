@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Button from '../components/Button';
 import Header from '../components/Header';
 import FeedbackInfo from '../components/FeedbackInfo';
-import Button from '../components/Button';
 
 class Feedback extends Component {
   render() {
@@ -18,15 +17,15 @@ class Feedback extends Component {
             btnLabel="Play Again"
           />
         </Link>
+        <Link to="/ranking">
+          <Button
+            testId="btn-ranking"
+            btnLabel="Ranking"
+          />
+        </Link>
       </div>
     );
   }
 }
-
-Feedbacks.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func,
-  }).isRequired,
-};
 
 export default Feedback;
