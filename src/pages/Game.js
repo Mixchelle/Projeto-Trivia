@@ -37,7 +37,7 @@ export default class Game extends Component {
 
   handleClickAnswer = () => {
     this.styleAnswerButton();
-    this.setState({nextOn: true})
+    this.setState({ nextOn: true });
   };
 
   shuffleArray = (arr) => {
@@ -70,7 +70,7 @@ export default class Game extends Component {
       correctAnswer,
       correctClass,
       wrongClass,
-      nextOn
+      nextOn,
     } = this.state;
     return (
       <div>
