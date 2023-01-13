@@ -72,6 +72,7 @@ export default class Game extends Component {
       wrongClass,
       nextOn,
     } = this.state;
+
     return (
       <div>
         <Header />
