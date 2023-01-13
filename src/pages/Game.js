@@ -13,6 +13,9 @@ export default class Game extends Component {
     answers: [],
     correctClass: '',
     wrongClass: '',
+    answered: false,
+    timer: 30,
+    intervalId: '',
     nextOn: false,
   };
 
@@ -28,7 +31,13 @@ export default class Game extends Component {
       this.setState({
         questions: apiCheck.results,
       }, this.handleShuffle);
+      this.timedStart();
     }
+  }
+
+  componentDidUpdate() {
+    const { timer } = this.state;
+    if (timer === 0) this.endTimer();
   }
 
   styleAnswerButton = () => {
@@ -37,7 +46,8 @@ export default class Game extends Component {
 
   handleClickAnswer = () => {
     this.styleAnswerButton();
-    this.setState({nextOn: true})
+    this.setState({ nextOn: true, answered: true });
+    this.endTimer();
   };
 
   shuffleArray = (arr) => {
@@ -62,6 +72,38 @@ export default class Game extends Component {
     }
   };
 
+  timedStart = () => {
+    const { timer, intervalId } = this.state;
+    const interval = 1000;
+
+    if (intervalId) {
+      this.setState({ timer: 30, intervalId: '' });
+    }
+
+    if (timer === 0) {
+      this.setState({ timer: 30, intervalId: '' });
+    }
+
+    const timerCount = setInterval(() => {
+      this.setState((prevState) => ({
+        ...prevState,
+        timer: prevState.timer - 1,
+        intervalId: timerCount,
+      }));
+    }, interval);
+  };
+
+  handleTimer = () => {
+    const { timer } = this.state;
+    const limit = 0;
+    if (timer === limit) return true;
+  };
+
+  endTimer = () => {
+    const { intervalId } = this.state;
+    clearInterval(intervalId);
+  };
+
   render() {
     const {
       questions,
@@ -70,7 +112,8 @@ export default class Game extends Component {
       correctAnswer,
       correctClass,
       wrongClass,
-      nextOn
+      timer,
+      nextOn,
     } = this.state;
     return (
       <div>
@@ -95,6 +138,7 @@ export default class Game extends Component {
                         .question
                     }
                   </h3>
+                  {timer}
                   <section
                     data-testid="answer-options"
                   >
@@ -114,6 +158,7 @@ export default class Game extends Component {
                               ? correctClass
                               : wrongClass
                           }
+                          isDisabled={ this.handleTimer() }
                         />
                       ))
                     }
