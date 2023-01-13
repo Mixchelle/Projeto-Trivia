@@ -104,9 +104,9 @@ export default class Game extends Component {
     clearInterval(intervalId);
   };
 
-  sumPoint = () => {
-    const { timer } = this.state;
-  }
+  // sumPoint = () => {
+  //   const { timer } = this.state;
+  // }
 
   render() {
     const {
