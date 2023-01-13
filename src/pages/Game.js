@@ -16,8 +16,8 @@ export default class Game extends Component {
 
   async componentDidMount() {
     const { history } = this.props;
-    const token = JSON.parse(localStorage.getItem('token'));
-    const url = `https://opentdb.com/api.php?amount=5&token=${token.token}`;
+    const token = localStorage.getItem('token');
+    const url = `https://opentdb.com/api.php?amount=5&token=${token}`;
     const apiCheck = await fetchToken(url);
     if (apiCheck.response_code === three) {
       localStorage.removeItem('token');
