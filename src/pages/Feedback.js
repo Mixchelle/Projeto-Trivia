@@ -44,7 +44,6 @@ const mapStateToProps = (state) => ({
 
 Feedbacks.propTypes = {
   assertions: PropTypes.number.isRequired,
-  // score: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(Feedbacks);
