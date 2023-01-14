@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import fetchToken from '../helpers/fetch';
-import { loginAction } from '../redux/actions/index';
+import { ACTION_LOGIN_SAVED } from '../redux/actions/index';
 
 class Login extends Component {
   state = {
     name: '',
-    email: '',
+    gravatarEmail: '',
   };
 
   handleChange = ({ target: { id, value } }) => {
@@ -24,12 +24,12 @@ class Login extends Component {
     const tokenFetch = await fetchToken(url);
     localStorage.setItem('objToken', JSON.stringify(tokenFetch));
     localStorage.setItem('token', tokenFetch.token);
-    dispatch(loginAction(this.state));
+    dispatch(ACTION_LOGIN_SAVED(this.state));
     history.push('/game');
   };
 
   render() {
-    const { name, email } = this.state;
+    const { name, gravatarEmail } = this.state;
     const { history } = this.props;
     return (
       <>
@@ -45,16 +45,16 @@ class Login extends Component {
         <Input
           type="email"
           labelName="Email: "
-          id="email"
+          id="gravatarEmail"
           testId="input-gravatar-email"
           placeholder="ada@lovelace.com"
-          value={ email }
+          value={ gravatarEmail }
           handleInput={ this.handleChange }
         />
         <Button
           testId="btn-play"
           btnLabel="Play"
-          isDisabled={ !(name.length > 0 && email.length > 0) }
+          isDisabled={ !(name.length > 0 && gravatarEmail.length > 0) }
           handleButton={ this.handleClick }
         />
         <Button

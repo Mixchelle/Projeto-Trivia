@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import fetchToken from '../helpers/fetch';
 import Button from '../components/Button';
+import { ACTION_INCREMENT_SCORE } from '../redux/actions';
 
+const one = 1;
+const two = 2;
 const three = 3;
-
-export default class Game extends Component {
+const four = 4;
+const ten = 10;
+const correctAnswerId = 'correct-answer';
+class Game extends Component {
   state = {
     questions: [],
     questionIndex: 0,
@@ -44,9 +50,24 @@ export default class Game extends Component {
     this.setState({ correctClass: 'green-border', wrongClass: 'red-border' });
   };
 
-  handleClickAnswer = () => {
+  handleClickAnswer = ({ target }) => {
+    const { dispatch } = this.props;
+    const { timer, questions, questionIndex } = this.state;
+    let dificuldade = 0;
+
     this.styleAnswerButton();
-    this.setState({ nextOn: true, answered: true });
+    if (target.id === correctAnswerId) {
+      if (questions[questionIndex].difficulty === 'easy') dificuldade = one;
+      if (questions[questionIndex].difficulty === 'medium') dificuldade = two;
+      if (questions[questionIndex].difficulty === 'hard') dificuldade = three;
+
+      ACTION_INCREMENT_SCORE(dispatch, (ten + (timer * dificuldade)));
+    }
+
+    this.setState({
+      nextOn: true,
+    });
+
     this.endTimer();
   };
 
@@ -104,9 +125,20 @@ export default class Game extends Component {
     clearInterval(intervalId);
   };
 
-  // sumPoint = () => {
-  //   const { timer } = this.state;
-  // }
+  handleNext = () => {
+    const { questionIndex } = this.state;
+    if (questionIndex < four) {
+      this.setState((prevState) => ({
+        nextOn: false,
+        questionIndex: prevState.questionIndex + 1,
+        correctClass: '',
+        wrongClass: '',
+      }), this.handleShuffle, this.timedStart());
+    } else {
+      const { history } = this.props;
+      history.push('/feedback');
+    }
+  };
 
   render() {
     const {
@@ -152,9 +184,14 @@ export default class Game extends Component {
                         <Button
                           key={ each }
                           btnLabel={ each }
+                          id={
+                            each === correctAnswer
+                              ? correctAnswerId
+                              : `wrong-answer-${index}`
+                          }
                           testId={
                             each === correctAnswer
-                              ? 'correct-answer'
+                              ? correctAnswerId
                               : `wrong-answer-${index}`
                           }
                           handleButton={ this.handleClickAnswer }
@@ -178,17 +215,24 @@ export default class Game extends Component {
             <Button
               testId="btn-next"
               disabled={ false }
+              handleButton={ this.handleNext }
               btnLabel="Next"
             />)
           : ''}
-
       </div>
     );
   }
 }
 
 Game.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
   }).isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+export default connect(mapStateToProps)(Game);
