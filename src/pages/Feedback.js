@@ -17,8 +17,6 @@ class Feedbacks extends Component {
         <h1 data-testid="feedback-text">
           {assertions < three ? 'Could be better...' : 'Well Done!'}
         </h1>
-        {/* <p>{ score }</p>
-        <p>{ assertions}</p> */}
         <FeedbackInfo />
         <Link to="/">
           <Button

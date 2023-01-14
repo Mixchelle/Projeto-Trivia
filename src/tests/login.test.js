@@ -55,19 +55,21 @@ test('Verifica se o botão "Play" redireciona para tela de jogo', async () => {
 const inputEmail = screen.getByRole('textbox', {
     name: /email:/i
   });
-const buttonPlay = screen.getByRole('button', {
+const button = screen.getByRole('button', {
     name: /play/i
   });
   expect(history.location.pathname).toBe('/');
+  
   userEvent.type(inputName, 'Trybe');
   userEvent.type(inputEmail, 'test@test.com');
+  userEvent.click(button);
 
-  userEvent.click(buttonPlay);
-
-  const title = await screen.findByText(/game/i);
+  const image = await screen.findByRole('img', {
+    name: /profile/i
+  })
   
-  expect(history.location.pathname).toBe('/game')
-  expect(title).toBeInTheDocument();
+  expect(image).toBeInTheDocument();
+  expect(history.location.pathname).toBe('/game');
 });
 test('Verifica se a tela inicial contem um botão que leve para a configuração do jogo', async () => {
   const { history } = renderWithRouterAndRedux(<App />);
