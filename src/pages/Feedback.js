@@ -10,13 +10,15 @@ const three = 3;
 
 class Feedbacks extends Component {
   render() {
-    const { questions } = this.props;
+    const { assertions } = this.props;
     return (
       <div>
         <Header />
         <h1 data-testid="feedback-text">
-          {questions < three ? 'Could be better...' : 'Well Done!'}
+          {assertions < three ? 'Could be better...' : 'Well Done!'}
         </h1>
+        {/* <p>{ score }</p>
+        <p>{ assertions}</p> */}
         <FeedbackInfo />
         <Link to="/">
           <Button
@@ -36,11 +38,13 @@ class Feedbacks extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  questions: state.questions,
+  assertions: state.player.assertions,
+  // score: state.player.score,
 });
 
 Feedbacks.propTypes = {
-  questions: PropTypes.number.isRequired,
+  assertions: PropTypes.number.isRequired,
+  // score: PropTypes.number.isRequired,
 };
 
 export default connect(mapStateToProps)(Feedbacks);

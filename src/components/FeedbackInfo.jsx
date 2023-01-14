@@ -4,17 +4,17 @@ import { connect } from 'react-redux';
 
 class Feedback extends Component {
   render() {
-    const { score, questions } = this.props;
+    const { score, assertions } = this.props;
     return (
       <div>
         <div>
           <span data-testid="feedback-total-score">
-            {`Total score: ${score}`}
+            { score }
           </span>
         </div>
         <div>
           <span data-testid="feedback-total-question">
-            {`Total questions: ${questions}`}
+            { assertions }
           </span>
         </div>
       </div>
@@ -22,9 +22,14 @@ class Feedback extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  score: state.player.score,
+  assertions: state.player.assertions,
+});
+
 Feedback.propTypes = {
   score: PropTypes.number.isRequired,
-  questions: PropTypes.number.isRequired,
+  assertions: PropTypes.number.isRequired,
 };
 
-export default connect()(Feedback);
+export default connect(mapStateToProps)(Feedback);
