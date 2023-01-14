@@ -10,9 +10,11 @@ const one = 1;
 const two = 2;
 const three = 3;
 const four = 4;
+
 const ten = 10;
 const correctAnswerId = 'correct-answer';
 class Game extends Component {
+
   state = {
     questions: [],
     questionIndex: 0,
@@ -151,7 +153,7 @@ class Game extends Component {
       timer,
       nextOn,
     } = this.state;
-
+    console.log(questions);
     return (
       <div>
         <Header />
@@ -217,6 +219,7 @@ class Game extends Component {
               disabled={ false }
               handleButton={ this.handleNext }
               btnLabel="Next"
+              handleButton={ this.handleNext }
             />)
           : ''}
       </div>
