@@ -10,7 +10,6 @@ const INITIAL_STATE = {
     score: 0,
     gravatarEmail: '',
   },
-  questions: 0,
 };
 
 const rootReducer = (state = INITIAL_STATE, action) => {
@@ -29,8 +28,8 @@ const rootReducer = (state = INITIAL_STATE, action) => {
       player: {
         ...state.player,
         score: state.player.score + action.payload,
+        assertions: state.player.assertions + 1,
       },
-      questions: state.questions + 1,
     };
   default:
     return state;
