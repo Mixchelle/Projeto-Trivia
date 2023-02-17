@@ -15,11 +15,11 @@ export default function App() {
         <img src={ logo } className="App-logo" alt="logo" />
         <p>SUA VEZ</p>
         <Switch>
-          <Route path="/" component={ Login } exact />
-          <Route exact path="/game" component={ Game } />
-          <Route exact path="/settings" component={ Settings } />
-          <Route exact path="/feedback" component={ Feedback } />
-          <Route exact path="/ranking" component={ Ranking } />
+          <Route path="/Projeto-Trivia" component={ Login } exact />
+          <Route exact path="/Projeto-Trivia/game" component={ Game } />
+          <Route exact path="/Projeto-Trivia/settings" component={ Settings } />
+          <Route exact path="/Projeto-Trivia/feedback" component={ Feedback } />
+          <Route exact path="/Projeto-Trivia/ranking" component={ Ranking } />
         </Switch>
       </header>
     </div>
