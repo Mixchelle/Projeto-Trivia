@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/app-toot-name/static/css/main.b67002ca.css",
-    "main.js": "/app-toot-name/static/js/main.7847a5fc.js",
+    "main.js": "/app-toot-name/static/js/main.f9e0b7c6.js",
     "static/media/trivia.png": "/app-toot-name/static/media/trivia.7e9181d35c0b06d5abc0.png",
     "index.html": "/app-toot-name/index.html",
     "main.b67002ca.css.map": "/app-toot-name/static/css/main.b67002ca.css.map",
-    "main.7847a5fc.js.map": "/app-toot-name/static/js/main.7847a5fc.js.map"
+    "main.f9e0b7c6.js.map": "/app-toot-name/static/js/main.f9e0b7c6.js.map"
   },
   "entrypoints": [
     "static/css/main.b67002ca.css",
-    "static/js/main.7847a5fc.js"
+    "static/js/main.f9e0b7c6.js"
   ]
 }
