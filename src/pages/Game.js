@@ -137,7 +137,7 @@ class Game extends Component {
       }), this.handleShuffle, this.timedStart());
     } else {
       const { history } = this.props;
-      history.push('/feedback');
+      history.push('/Projeto-Trivia/feedback');
     }
   };
 

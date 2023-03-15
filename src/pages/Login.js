@@ -25,7 +25,7 @@ class Login extends Component {
     localStorage.setItem('objToken', JSON.stringify(tokenFetch));
     localStorage.setItem('token', tokenFetch.token);
     dispatch(ACTION_LOGIN_SAVED(this.state));
-    history.push('/game');
+    history.push('/Projeto-Trivia/game');
   };
 
   render() {

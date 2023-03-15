@@ -18,13 +18,13 @@ class Feedbacks extends Component {
           {assertions < three ? 'Could be better...' : 'Well Done!'}
         </h1>
         <FeedbackInfo />
-        <Link to="/">
+        <Link to="/Projeto-Trivia/">
           <Button
             testId="btn-play-again"
             btnLabel="Play Again"
           />
         </Link>
-        <Link to="/ranking">
+        <Link to="/Projeto-Trivia/ranking">
           <Button
             testId="btn-ranking"
             btnLabel="Ranking"
