@@ -9,7 +9,7 @@ class Header extends Component {
     const emailString = md5(gravatarEmail).toString();
 
     return (
-      <div>
+      <div className=''>
         <img
           src={ `https://www.gravatar.com/avatar/${emailString}` }
           alt="Profile"
