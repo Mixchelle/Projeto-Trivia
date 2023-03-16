@@ -12,7 +12,7 @@ class Feedbacks extends Component {
   render() {
     const { assertions } = this.props;
     return (
-      <div>
+      <div className="game">
         <Header />
         <h1 data-testid="feedback-text">
           {assertions < three ? 'Could be better...' : 'Well Done!'}

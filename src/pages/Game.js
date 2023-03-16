@@ -156,70 +156,76 @@ class Game extends Component {
     return (
       <div>
         <Header />
-        <section>
-          {
-            questions.length > 0
-              ? (
-                <>
-                  <h3
-                    data-testid="question-category"
-                  >
-                    {
-                      questions[questionIndex].category
-                    }
-                  </h3>
-                  <h3
-                    data-testid="question-text"
-                  >
-                    {
-                      questions[questionIndex]
-                        .question
-                    }
-                  </h3>
-                  {timer}
-                  <section
-                    data-testid="answer-options"
-                  >
-                    {
-                      answers.map((each, index) => (
-                        <Button
-                          key={ each }
-                          btnLabel={ each }
-                          id={
-                            each === correctAnswer
-                              ? correctAnswerId
-                              : `wrong-answer-${index}`
-                          }
-                          testId={
-                            each === correctAnswer
-                              ? correctAnswerId
-                              : `wrong-answer-${index}`
-                          }
-                          handleButton={ this.handleClickAnswer }
-                          buttonClassCss={
-                            each === correctAnswer
-                              ? correctClass
-                              : wrongClass
-                          }
-                          isDisabled={ this.handleTimer() }
-                        />
-                      ))
-                    }
-                  </section>
-                </>
-              )
-              : <h1>LOADING...</h1>
-          }
-        </section>
-        {nextOn
-          ? (
-            <Button
-              testId="btn-next"
-              disabled={ false }
-              handleButton={ this.handleNext }
-              btnLabel="Next"
-            />)
-          : ''}
+        <div className="game">
+          <section>
+            {
+              questions.length > 0
+                ? (
+                  <>
+                    <h1
+                      data-testid="question-category"
+                      id="question-category"
+                    >
+                      {
+                        questions[questionIndex].category
+                      }
+                    </h1>
+                    <h3
+                      data-testid="question-text"
+                      id="question-text"
+                    >
+                      {
+                        questions[questionIndex]
+                          .question
+                      }
+                    </h3>
+                    <h2>
+                      {timer}
+                    </h2>
+                    <section
+                      data-testid="answer-options"
+                    >
+                      {
+                        answers.map((each, index) => (
+                          <Button
+                            key={ each }
+                            btnLabel={ each }
+                            id={
+                              each === correctAnswer
+                                ? correctAnswerId
+                                : `wrong-answer-${index}`
+                            }
+                            testId={
+                              each === correctAnswer
+                                ? correctAnswerId
+                                : `wrong-answer-${index}`
+                            }
+                            handleButton={ this.handleClickAnswer }
+                            buttonClassCss={
+                              each === correctAnswer
+                                ? correctClass
+                                : wrongClass
+                            }
+                            isDisabled={ this.handleTimer() }
+                          />
+                        ))
+                      }
+                    </section>
+                  </>
+                )
+                : <h1>LOADING...</h1>
+            }
+          </section>
+          {nextOn
+            ? (
+              <Button
+                testId="btn-next"
+                disabled={ false }
+                handleButton={ this.handleNext }
+                btnLabel="Next"
+              />)
+            : ''}
+        </div>
       </div>
     );
   }

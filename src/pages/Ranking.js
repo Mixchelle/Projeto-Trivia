@@ -5,7 +5,7 @@ import Button from '../components/Button';
 class Ranking extends Component {
   render() {
     return (
-      <div>
+      <div className="game">
         <h1 data-testid="ranking-title">Ranking</h1>
         <Link to="/">
           <Button
