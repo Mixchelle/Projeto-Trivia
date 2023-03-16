@@ -66,9 +66,9 @@ textarea:focus, input:focus{
   color: white;
   display: flex;
   flex-direction: column;
-  font-size: calc(10px + 2vmin);
   justify-content: center;
   text-align: center;
+  padding-bottom: 0;
 }
 
 
@@ -121,13 +121,18 @@ button{
   font-size: 3rm;
   width: 100px;
 }
-
+section{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 35%;
+}
 .game{
   display: flex;
   flex-direction: column ;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 10px;
+  padding: 0px;
   margin-top: 10px;
   text-align: center;
   align-items: center;

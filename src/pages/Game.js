@@ -156,66 +156,65 @@ class Game extends Component {
     return (
       <div>
         <Header />
-        <div className="game">
-          <section>
-            {
-              questions.length > 0
-                ? (
-                  <>
-                    <h1
-                      data-testid="question-category"
-                      id="question-category"
-                    >
-                      {
-                        questions[questionIndex].category
-                      }
-                    </h1>
-                    <h3
-                      data-testid="question-text"
-                      id="question-text"
-                    >
-                      {
-                        questions[questionIndex]
-                          .question
-                      }
-                    </h3>
-                    <h2>
-                      {timer}
-                    </h2>
-                    <section
-                      data-testid="answer-options"
-                    >
-                      {
-                        answers.map((each, index) => (
-                          <Button
-                            key={ each }
-                            btnLabel={ each }
-                            id={
-                              each === correctAnswer
-                                ? correctAnswerId
-                                : `wrong-answer-${index}`
-                            }
-                            testId={
-                              each === correctAnswer
-                                ? correctAnswerId
-                                : `wrong-answer-${index}`
-                            }
-                            handleButton={ this.handleClickAnswer }
-                            buttonClassCss={
-                              each === correctAnswer
-                                ? correctClass
-                                : wrongClass
-                            }
-                            isDisabled={ this.handleTimer() }
-                          />
-                        ))
-                      }
-                    </section>
-                  </>
-                )
-                : <h1>LOADING...</h1>
-            }
-          </section>
+        <section className="game">
+          {
+            questions.length > 0
+              ? (
+                <>
+                  <h1
+                    data-testid="question-category"
+                    id="question-category"
+                  >
+                    {
+                      questions[questionIndex].category
+                    }
+                  </h1>
+                  <h3
+                    data-testid="question-text"
+                    id="question-text"
+                  >
+                    {
+                      questions[questionIndex]
+                        .question
+                    }
+                  </h3>
+                  <h2>
+                    {timer}
+                  </h2>
+                  <section
+                    data-testid="answer-options"
+                  >
+                    {
+                      answers.map((each, index) => (
+                        <Button
+                          key={ each }
+                          btnLabel={ each }
+                          id={
+                            each === correctAnswer
+                              ? correctAnswerId
+                              : `wrong-answer-${index}`
+                          }
+                          testId={
+                            each === correctAnswer
+                              ? correctAnswerId
+                              : `wrong-answer-${index}`
+                          }
+                          handleButton={ this.handleClickAnswer }
+                          buttonClassCss={
+                            each === correctAnswer
+                              ? correctClass
+                              : wrongClass
+                          }
+                          isDisabled={ this.handleTimer() }
+                        />
+                      ))
+                    }
+                  </section>
+                </>
+              )
+              : <h1>LOADING...</h1>
+          }
+
           {nextOn
             ? (
               <Button
@@ -225,7 +224,7 @@ class Game extends Component {
                 btnLabel="Next"
               />)
             : ''}
-        </div>
+        </section>
       </div>
     );
   }
