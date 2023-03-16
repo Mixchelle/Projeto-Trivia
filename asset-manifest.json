@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Projeto-Trivia/static/css/main.71cf2396.css",
-    "main.js": "/Projeto-Trivia/static/js/main.018c887f.js",
+    "main.css": "/Projeto-Trivia/static/css/main.fa494374.css",
+    "main.js": "/Projeto-Trivia/static/js/main.d325ee69.js",
     "static/media/trivia.png": "/Projeto-Trivia/static/media/trivia.7e9181d35c0b06d5abc0.png",
     "index.html": "/Projeto-Trivia/index.html",
-    "main.71cf2396.css.map": "/Projeto-Trivia/static/css/main.71cf2396.css.map",
-    "main.018c887f.js.map": "/Projeto-Trivia/static/js/main.018c887f.js.map"
+    "main.fa494374.css.map": "/Projeto-Trivia/static/css/main.fa494374.css.map",
+    "main.d325ee69.js.map": "/Projeto-Trivia/static/js/main.d325ee69.js.map"
   },
   "entrypoints": [
-    "static/css/main.71cf2396.css",
-    "static/js/main.018c887f.js"
+    "static/css/main.fa494374.css",
+    "static/js/main.d325ee69.js"
   ]
 }
