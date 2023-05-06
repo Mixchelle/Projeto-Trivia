@@ -2,14 +2,12 @@
 
 <p>Este repositório contém o projeto Trivia, desenvolvido pelo grupo abaixo:</p>
 
-<ul>
-  <li>@GabiNamu 🌟</li>
-  <li>@Mixchelle ✨</li>
-  <li>@arturMucci 🚀</li>
-  <li>@RicardoPBJ 🎯</li>
-  <li>@viniciuspozzatto 🌈</li>
-  <li>@GeorgeHCSS 🌟</li>
-</ul>
+ - [@Mixchelle](https://www.github.com/Mixchelle)
+ - [@GabiNamu](https://www.github.com/GabiNamu)
+ - [@arturMucci](https://www.github.com/arturMucci)
+ - [@RicardoPBJ](https://www.github.com/RicardoPBJ)
+ - [@viniciuspozzatto](https://www.github.com/viniciuspozzatto)
+ - [@GeorgeHCSS](https://www.github.com/GeorgeHCSS)
 
 <h2>📚 Organização do Projeto</h2>
 
